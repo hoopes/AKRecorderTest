@@ -11,6 +11,9 @@
 		1DB07424276190A500CBED45 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB07423276190A500CBED45 /* ContentView.swift */; };
 		1DB07426276190A900CBED45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB07425276190A900CBED45 /* Assets.xcassets */; };
 		1DB07429276190A900CBED45 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB07428276190A900CBED45 /* Preview Assets.xcassets */; };
+		1DB0743127619D0E00CBED45 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1DB0743027619D0E00CBED45 /* AudioKit */; };
+		1DB074352765525800CBED45 /* alphabet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DB074342765525800CBED45 /* alphabet.mp3 */; };
+		1DB074372766752500CBED45 /* alphabet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DB074362766752500CBED45 /* alphabet.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,8 @@
 		1DB07423276190A500CBED45 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1DB07425276190A900CBED45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DB07428276190A900CBED45 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1DB074342765525800CBED45 /* alphabet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alphabet.mp3; sourceTree = "<group>"; };
+		1DB074362766752500CBED45 /* alphabet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alphabet.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DB0743127619D0E00CBED45 /* AudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +59,8 @@
 			children = (
 				1DB07421276190A500CBED45 /* AKRecorderTestApp.swift */,
 				1DB07423276190A500CBED45 /* ContentView.swift */,
+				1DB074342765525800CBED45 /* alphabet.mp3 */,
+				1DB074362766752500CBED45 /* alphabet.wav */,
 				1DB07425276190A900CBED45 /* Assets.xcassets */,
 				1DB07427276190A900CBED45 /* Preview Content */,
 			);
@@ -83,6 +91,9 @@
 			dependencies = (
 			);
 			name = AKRecorderTest;
+			packageProductDependencies = (
+				1DB0743027619D0E00CBED45 /* AudioKit */,
+			);
 			productName = AKRecorderTest;
 			productReference = 1DB0741E276190A500CBED45 /* AKRecorderTest.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 1DB07415276190A500CBED45;
+			packageReferences = (
+				1DB0742F27619D0E00CBED45 /* XCRemoteSwiftPackageReference "AudioKit" */,
+			);
 			productRefGroup = 1DB0741F276190A500CBED45 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +140,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DB07429276190A900CBED45 /* Preview Assets.xcassets in Resources */,
+				1DB074372766752500CBED45 /* alphabet.wav in Resources */,
+				1DB074352765525800CBED45 /* alphabet.mp3 in Resources */,
 				1DB07426276190A900CBED45 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +288,7 @@
 				DEVELOPMENT_TEAM = Y689F68ZJ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fuck it";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +318,7 @@
 				DEVELOPMENT_TEAM = Y689F68ZJ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fuck it";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -341,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1DB0742F27619D0E00CBED45 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1DB0743027619D0E00CBED45 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1DB0742F27619D0E00CBED45 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1DB07416276190A500CBED45 /* Project object */;
 }
