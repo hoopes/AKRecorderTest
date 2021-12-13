@@ -13,7 +13,6 @@
 		1DB07429276190A900CBED45 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB07428276190A900CBED45 /* Preview Assets.xcassets */; };
 		1DB0743127619D0E00CBED45 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1DB0743027619D0E00CBED45 /* AudioKit */; };
 		1DB074352765525800CBED45 /* alphabet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DB074342765525800CBED45 /* alphabet.mp3 */; };
-		1DB074372766752500CBED45 /* alphabet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DB074362766752500CBED45 /* alphabet.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		1DB07425276190A900CBED45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DB07428276190A900CBED45 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1DB074342765525800CBED45 /* alphabet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alphabet.mp3; sourceTree = "<group>"; };
-		1DB074362766752500CBED45 /* alphabet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alphabet.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,6 @@
 				1DB07421276190A500CBED45 /* AKRecorderTestApp.swift */,
 				1DB07423276190A500CBED45 /* ContentView.swift */,
 				1DB074342765525800CBED45 /* alphabet.mp3 */,
-				1DB074362766752500CBED45 /* alphabet.wav */,
 				1DB07425276190A900CBED45 /* Assets.xcassets */,
 				1DB07427276190A900CBED45 /* Preview Content */,
 			);
@@ -140,7 +137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DB07429276190A900CBED45 /* Preview Assets.xcassets in Resources */,
-				1DB074372766752500CBED45 /* alphabet.wav in Resources */,
 				1DB074352765525800CBED45 /* alphabet.mp3 in Resources */,
 				1DB07426276190A900CBED45 /* Assets.xcassets in Resources */,
 			);
