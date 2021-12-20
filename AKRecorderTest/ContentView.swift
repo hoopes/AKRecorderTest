@@ -11,52 +11,87 @@ import AVFoundation
 import SwiftUI
 
 class RecorderConductor: ObservableObject {
-
-  init() {
-    NodeRecorder.removeTempFiles() // just make sure the temp dir exists
-
-    let mp3Url = Bundle.main.url(forResource: "alphabet", withExtension: "mp3")!
-    let player = AudioPlayer(url: mp3Url)!
-
-    let engine = AudioEngine()
-    engine.output = player
-    try! engine.start()
-    player.play()
-
-    let fm = FileManager.default
-    let filename = UUID().uuidString + ".m4a"
-    let outfileUrl = fm.temporaryDirectory.appendingPathComponent(filename)
-
-    var settings = Settings.audioFormat.settings
-    settings[AVFormatIDKey] = kAudioFormatMPEG4AAC
-    settings[AVLinearPCMIsNonInterleaved] = NSNumber(value: false)
-
-    let outFile = try! AVAudioFile(
-      forWriting: outfileUrl,
-      settings: settings)
-
-    let recorder = try! NodeRecorder(node: player, file: outFile)
-    try! recorder.record()
-
-    sleep(2)
-
-    recorder.stop()
-    engine.stop()
-
-    print ("*** Created m4a file: \(recorder.audioFile?.url)")
-  }
+    
+    init() {
+        
+        NodeRecorder.removeTempFiles() // just make sure the temp dir exists
+        
+        let inputFileURL = Bundle.main.url(forResource: "TestResources/12345", withExtension: "wav")!
+        
+        assert(FileManager.default.fileExists(atPath: inputFileURL.path),
+               "inputFileURL does not exist")
+        
+        let fm = FileManager.default
+        let filename = UUID().uuidString + ".m4a"
+        let outputFileURL = fm.temporaryDirectory.appendingPathComponent(filename)
+        
+        let player = AudioPlayer(url: inputFileURL)!
+        
+        let engine = AudioEngine()
+        engine.output = player
+        try! engine.start()
+        
+        player.play()
+        
+        var settings = Settings.audioFormat.settings
+        settings[AVFormatIDKey] = kAudioFormatMPEG4AAC
+        settings[AVLinearPCMIsNonInterleaved] = NSNumber(value: false)
+        
+        var outFile: AVAudioFile
+        do {
+            outFile = try AVAudioFile(forWriting: outputFileURL, settings: settings)
+        } catch {
+            assertionFailure("could not create outFile: \(error.localizedDescription)")
+            fatalError()
+        }
+        
+        assert(FileManager.default.fileExists(atPath: outFile.url.path),
+               "outFile does not exist")
+        
+        var recorder: NodeRecorder
+        do {
+            recorder = try NodeRecorder(node: player, file: outFile)
+        } catch {
+            assertionFailure("could not create recorder: \(error.localizedDescription)")
+            fatalError()
+        }
+        
+        do {
+            try recorder.record()
+        } catch {
+            assertionFailure("could not run recorder.record(): \(error.localizedDescription)")
+        }
+        
+        sleep(6) // a little longer than 2 seconds to allow some wiggle room
+        
+        player.stop()
+        recorder.stop()
+        engine.stop()
+        
+        var successFile: AVAudioFile
+        do {
+            successFile = try AVAudioFile(forReading: outputFileURL)
+        } catch {
+            assertionFailure("could not create successFile: \(error.localizedDescription)")
+            fatalError()
+        }
+        
+        assert(successFile.length > 0, "successFile length is not > 0")
+        
+        print ("*** Created m4a file?: \(recorder.audioFile?.url)")
+    }
 }
 
 struct ContentView: View {
-
-  let conductor = RecorderConductor()
-
-  var body: some View {
-    VStack {
-      Text("Hello World")
+    
+    let conductor = RecorderConductor()
+    
+    var body: some View {
+        VStack {
+            Text("Hello World")
+        }
+        
+        .padding()
+        .navigationBarTitle(Text("Recorder"))
     }
-
-    .padding()
-    .navigationBarTitle(Text("Recorder"))
-  }
 }
